@@ -1,5 +1,16 @@
 # Context Artifacts Without Reinventing Technical Writing
 
+**Table of Contents:**
+- [Introduction](#Introduction)
+- [Why duplication happens](#Why-duplication-happens)
+- [How rot happens](#How-rot-happens)
+- [What technical writing figured out](#What-technical-writing-figured-out)
+- [How to prevent rot](#How-to-prevent-rot)
+- [What to do](#What-to-do)
+- [Beyond duplication](#Beyond-duplication)
+
+## Introduction
+
 Context engineering is rediscovering problems that technical writing has been solving for decades.
 
 I've worked on both sides. I ran editorial direction for [Real Python](https://realpython.com/) for three and a half years, shipping two written tutorials and one video course every week to more than three million monthly visitors. I'm a founding member of the [Python Documentation Editorial Board](https://peps.python.org/pep-0732/). I'm now a Context Engineer at RelationalAI.
