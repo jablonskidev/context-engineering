@@ -35,7 +35,7 @@ Progressive disclosure shaped the redesign.
 Overview pages helped readers choose the next step, while task pages focused on helping them complete a specific action with only the context required to succeed.
 Instead of repeating the same guidance across sections, pages linked back to canonical sources.
 
-I used agents during the project, but I defined the information model, task boundaries, naming conventions, and navigation logic.
+I used agents to help complete the project, but I defined the information model, task boundaries, naming conventions, and navigation logic.
 
 The result was a documentation structure that reduced navigation friction, clarified task boundaries, and made the knowledge in the docs easier for both people and AI systems to act on.
 
