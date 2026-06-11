@@ -2,65 +2,51 @@
 
 **Table of Contents:**
 - [Introduction](#Introduction)
-- [The Project](#The-Project)
+- [The Structural Problem](#The-Structural-Problem)
+- [Designing the New Structure](#Designing-the-New-Structure)
+- [Making the Structure Executable](#Making-the-Structure-Executable)
 - [Why It Worked](#Why-It-Worked)
-- [Context Engineering in Practice](#Context-Engineering-in-Practice)
-- [Conclusion](#Conclusion)
 
 ## Introduction
 
-Context engineering is the practice of designing information so humans and AI systems can find, interpret, and use the right thing at the right moment.
-Task-centered documentation is one practical way to do that.
+Effective context engineering requires task-centered documentation. When docs are structured around tasks rather than concepts, both humans and AI systems can more easily find the right information at the right time.
 
-Too many documentation sets are still organized around internal systems rather than user goals.
-That forces users to translate product structure into the action they actually need to take.
-When documentation mirrors how a system is built rather than what a user needs to do, navigation gets harder and retrieval gets noisier.
-AI systems run into a similar problem: they work best when tasks, boundaries, and outcomes are explicit.
+Too many documentation sets still mirror how a product is built rather than what a user is trying to do. That forces readers to translate system structure into action. It also produces weaker retrieval targets for AI systems, which work best when tasks, boundaries, and outcomes are explicit.
 
-I addressed this problem in a recent documentation project.
+## The Structural Problem
 
-## The Project
+I recently reorganized the [Manage](https://private.relational.ai/manage/) section of a docs site around user tasks rather than product components. The goal was to make the docs easier for both humans and AI systems to use.
 
-The brief was to restructure the admin-facing docs around tasks. The goal was to make the docs easier to navigate, maintain, and use well.
+Before the rearchitecture, [Build](https://docs.relational.ai/build/) already routed users by goal and workflow, but [Manage](https://docs.relational.ai/manage/) still routed administrators through components. Users often landed in broad, component-led pages where concepts, operational details, prerequisites, and procedures were bundled together. To complete a task, they first had to understand how the documentation mirrored the underlying system.
 
-Before the restructure, [Build](https://docs.relational.ai/build/) already routed users by goal and workflow, but [Manage](https://docs.relational.ai/manage/) still routed administrators through internal components and infrastructure.
-That meant users often landed in broad, component-led pages where concepts, operational details, and tasks were bundled together.
-The redesign replaced that model with one organized around workflows, related tasks, and verb-led headings that made actions easier to find.
+That was a real problem. It was not just a matter of page length or writing style. The organizing model asked users to navigate by internal structure rather than by intent.
 
-The work was not just about simplifying language.
-It was about changing the shape of the information.
-Pages became smaller and more task-centered, titles became more action-oriented, and developer-facing and administrator-facing paths became more clearly separated.
+## Designing the New Structure
 
-Progressive disclosure shaped the redesign.
-Overview pages helped readers choose the next step, while task pages focused on helping them complete a specific action with only the context required to succeed.
-Instead of repeating the same guidance across sections, pages linked back to canonical sources.
+I replaced that component-led model with a task-centered one: workflows at the top level, narrower task pages underneath, and verb-led headings that made actions easier to scan.
 
-I used agents to help complete the project, but I defined the information model, task boundaries, naming conventions, and navigation logic.
+I redesigned the information model. I broke broad pages into narrower task pages, used overview pages to route readers through a workflow, and rewrote page titles and task headings around actions. I also separated developer-facing and administrator-facing paths more clearly so each audience saw less irrelevant context. Instead of repeating the same guidance in multiple places, I linked to canonical sources and treated duplication as a structural problem rather than a writing convenience.
 
-The result was a documentation structure that reduced navigation friction, clarified task boundaries, and made the knowledge in the docs easier for both people and AI systems to act on.
+Those changes clarified task boundaries, reduced ambiguity about where content belonged, and made the documentation easier to extend without turning pages into catch-alls.
+
+## Making the Structure Executable
+
+The redesign worked because I turned it into an explicit system rather than a set of preferences.
+
+I created shared scaffolds that encoded the rules of the new structure. An architecture document defined the information architecture philosophy, hierarchy model, naming conventions, placement heuristics, and agent-oriented retrieval assumptions. Shared templates defined the expected shape of overview pages and task pages. A planning template gave each generated page a standard scaffold before drafting began. I also created page-specific planning and research documents to define audience, task boundaries, workflow position, source material, and document type before generation.
+
+Existing documentation pages served as source material where useful, but they also acted as boundary-setting references: material to extract from, link to, avoid duplicating, or keep on the other side of an audience or surface-area split.
+
+Agents helped execute the project, but only within that scaffold. The high-leverage work was still defining the information model, deciding what counted as a task, determining what belonged together or needed to be split apart, selecting the right document type, naming pages consistently, and giving agents enough structure to produce usable output. The agents accelerated execution. They did not supply the architecture.
 
 ## Why It Worked
 
-This approach works by starting with the action a user is trying to take and supplying the context needed at that point.
+The new structure worked because it made tasks, boundaries, and relationships explicit.
 
-For human readers, that lowers cognitive load. A user can scan for a verb, recognize the task that matches their goal, and move forward without decoding product structure or sorting through instructions meant for someone else.
-Smaller pages reduce context switching, and clearer audience boundaries reduce noise.
+For human readers, that reduced cognitive load. A reader could scan for a verb, recognize the task that matched their goal, and move forward without decoding product structure first. Smaller pages reduced context switching, and clearer audience boundaries reduced noise.
 
-For AI systems, the same structure produces better retrieval targets.
-Broad, component-based pages often mix concepts, procedures, and audiences together, making them harder to chunk cleanly and harder to target precisely.
-An intent-first structure creates clearer boundaries and makes relevant guidance easier to retrieve and use.
+For AI systems, the same structure produced better retrieval targets. Broad, component-based pages often mix concepts, procedures, and audiences together, which makes them harder to chunk cleanly and harder to target precisely. A task-centered structure creates clearer boundaries and makes relevant guidance easier to retrieve and act on.
 
-Humans and AI do not use documentation in the same way, but they benefit from many of the same structural choices: explicit headings, narrowly scoped pages, audience-separated workflows, and concepts linked from tasks instead of interrupting them.
-The same move that improves usability for a person often improves retrieval quality for an agent.
+The supporting artifacts mattered for the same reason. The architecture document made placement and naming rules explicit. Templates constrained page shape. Planning documents supplied page-level scope and source boundaries. In other words, the agents worked better for the same reason the docs worked better: the structure was explicit enough to navigate, reuse, and execute.
 
-## Context Engineering in Practice
-
-In this project, context engineering meant shaping knowledge so it became usable at the moment of need, whether the audience was human or AI.
-The real work was deciding what belonged together, what needed to be split apart, what users needed first, what could be deferred, and what language would make tasks easier to find and use.
-
-## Conclusion
-
-Good documentation does not just explain a system. It helps someone do something with it.
-
-When the structure is organized around intent, documentation becomes easier for people to navigate and easier for AI systems to use well.
-That is what makes task-centered docs more than good documentation design. It makes them usable infrastructure.
+Task-centered docs are essential for making operational knowledge more usable for both humans and AI systems.
