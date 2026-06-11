@@ -1,4 +1,4 @@
-# Why Task-Centered Docs Work for Humans and AI
+# Task-Centered Docs as Context Engineering
 
 **Table of Contents:**
 - [Introduction](#Introduction)
