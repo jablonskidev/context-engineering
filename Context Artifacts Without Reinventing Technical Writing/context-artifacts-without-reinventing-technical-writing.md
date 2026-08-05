@@ -53,7 +53,7 @@ Referencing works when the docs are maintained. It's not a small ask, but it's t
 
 ## What to Do
 
-When building a context artifact, default to referencing maintained sources rather than duplicating them. When the information has no maintained home, giving it one is the work. The artifact is built on top of good docs, not in place of them.
+When building a context artifact, default to referencing maintained sources rather than duplicating them. When the information has no maintained home, you need to give it one. The artifact is built on top of good docs, not in place of them.
 
 You need to:
 - Write it once
