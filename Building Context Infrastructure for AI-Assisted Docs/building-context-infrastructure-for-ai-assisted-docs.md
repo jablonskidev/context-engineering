@@ -2,13 +2,13 @@
 
 **Table of contents:**
 - [Introduction](#Introduction)
-- [Documentation Work Breaks When Context Stays Implicit](#Documentation-Work-Breaks-When-Context-Stays-Implicit)
+- [Documentation Work Breaks When Context Is Implicit](#Documentation-Work-Breaks-When-Context-Is-Implicit)
 - [What I Mean by Context Engineering](#What-I-Mean-by-Context-Engineering)
 - [Why the Workflow Needed Structure](#Why-the-Workflow-Needed-Structure)
 - [Reusable Output Was Still Too Slow to Trust](#Reusable-Output-Was-Still-Too-Slow-to-Trust)
 - [A Correctly Blocked Artifact Is Still Useful](#A-Correctly-Blocked-Artifact-Is-Still-Useful)
 - [Strong Stage Artifacts Can Still Create Workflow Friction](#Strong-Stage-Artifacts-Can-Still-Create-Workflow-Friction)
-- [What the Pilots Taught Me About the Work](#What-the-Pilots-Taught-Me-About-the-Work)
+- [What the Pilots Taught Me](#What-the-Pilots-Taught-Me)
 
 ## Introduction
 
@@ -22,12 +22,12 @@ Reviewers end up reviewing sources, reconstructing intent, and remaking decision
 
 In this project, context engineering meant designing the context that the model would use so that reviewers could trust what it produced.
 
-## Documentation Work Breaks When Context Stays Implicit
+## Documentation Work Breaks When Context Is Implicit
 
 AI can make drafting faster, but a reviewer still needs clear scope, evidence, target pages, and claim boundaries.
-If those stay implicit, then the time saved during generation just gets spent on review.
+If those are implicit, then the time saved during generation just gets spent on review.
 
-That was the core problem in this project. I was not trying to get an agent to publish polished docs on its own. I was trying to build a workflow that a reviewer would choose over a blank page.
+That was the core problem in this project. I was not trying to get an agent to publish polished docs on its own. I was trying to build a workflow that a reviewer would want to work with.
 
 ## What I Mean by Context Engineering
 
@@ -83,7 +83,7 @@ The problem was not in any one file but in the gaps between them.
 I fixed that problem by adding a short synthesis artifact that summarized the whole run in one place.
 After the next pilot showed it reduced navigation cost, I kept it.
 
-## What the Pilots Taught Me About the Work
+## What the Pilots Taught Me
 
 The main lessons were about what a workflow needs before people will trust and reuse it:
 - Clear signals about where to look first
