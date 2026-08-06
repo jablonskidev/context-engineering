@@ -10,7 +10,7 @@
 ## Instructions Alone Provide No Evidence of Compliance
 
 A docs repo I was working in already had a style guide and instructions for coding agents.
-Those files described what good docs should look like, but no deterministic check showed whether an agent's draft followed the rules.
+Those files described what good docs should look like, but no deterministic check reported whether a draft violated any of their observable prose rules.
 
 Reliable agent workflows need executable evaluation, not just instructions.
 For this project, I used [Vale](https://docs.vale.sh/), which is an evaluator that both agents and humans can run.
@@ -20,29 +20,31 @@ For this project, I used [Vale](https://docs.vale.sh/), which is an evaluator th
 Vale is a configurable prose linter.
 It fit this project because it ran from the repository, reported each finding by file, location, and rule, and let me select rules and severity.
 
-The workflow separated safe corrections from findings that required human judgment:
+The project produced a bounded protocol for deciding when the agent could correct and verify a finding and when it should escalate for human judgment:
 
 ```mermaid
-flowchart LR
-    A[Instructions] --> B[Draft]
-    B --> C[Evaluate]
-    C --> D{Any configured findings?}
-    D -->|No| E[No configured findings]
+flowchart TD
+    A[Instructions] --> B[Draft] --> C[Evaluate]
+    C --> D{Any findings from enabled rules?}
+    D -->|No| E[No findings from enabled rules]
     D -->|Yes| F[Review findings]
-    F --> G{Safe to correct?}
+    F --> G{Safe correction?}
     G -->|No| H[Escalate]
     G -->|Yes| I[Correct]
-    I --> J[Rerun once]
-    J --> K{Finding persists?}
-    K -->|No| L[Correction verified]
-    K -->|Yes| H
+    I --> J{Technical meaning preserved?}
+    J -->|No| H
+    J -->|Yes| K[Rerun once]
+    K --> L{Target removed without new findings?}
+    L -->|No| H
+    L -->|Yes| M[Correction verified]
 ```
 
+The protocol depended on actionable findings.
 Vale reported each finding with a file, location, rule, and message.
-That let the agent inspect the relevant passage and propose a bounded correction or escalate the finding.
-A generic quality score by itself would not identify what to inspect or change.
+That gave the agent enough context to inspect the relevant passage and decide whether to correct or escalate.
+A generic quality score alone would not identify what to inspect or change.
 
-The configuration enabled only selected rules and kept every finding advisory:
+The configuration enabled only selected rules at suggestion severity:
 
 ```ini
 [*.{md,mdx}]
@@ -54,12 +56,13 @@ Microsoft.Passive = suggestion
 Microsoft.Wordiness = suggestion
 ```
 
-I kept the MVP advisory so I could measure signal and false positives before allowing the evaluator to block work or drive automatic corrections.
+`Vale = NO` disabled Vale's built-in rules. The four named Microsoft rules remained enabled at suggestion severity.
+The repository command reported findings without failing the run, which let me measure signal and false positives before allowing the evaluator to block work or drive automatic corrections.
 
 I framed the problem, set acceptance gates, evaluated the evidence, and made the final decisions.
 A coding agent implemented the bounded change, gathered findings, ran checks, and corrected defects.
 
-A common evaluator made the findings consistent, but consistency alone did not make them useful.
+Running the same repository-local configuration produced consistent findings, but consistency alone did not make them useful.
 I still needed to test the configuration and the findings.
 
 ## Deterministic Feedback Still Requires Validation
@@ -132,7 +135,7 @@ You can use it when an instruction describes behavior narrow enough to observe a
 1. Identify one observable requirement from an instruction.
 2. Define evidence that would indicate compliance with that requirement.
 3. Choose a deterministic evaluator that the workflow can run.
-4. Test the evaluator on representative repository cases before enforcing its results.
+4. Test the evaluator on representative repository cases.
 5. Evaluate usefulness, false positives, scope, and repeatability.
 6. Define when the agent corrects, reruns, or escalates.
 7. Enforce only after representative tests establish useful, repeatable signal.
