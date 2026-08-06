@@ -48,8 +48,6 @@ The configuration enabled only selected rules at suggestion severity:
 
 ```ini
 [*.{md,mdx}]
-BasedOnStyles = Vale
-Vale = NO
 Microsoft.Contractions = suggestion
 Microsoft.We = suggestion
 Microsoft.Passive = suggestion
