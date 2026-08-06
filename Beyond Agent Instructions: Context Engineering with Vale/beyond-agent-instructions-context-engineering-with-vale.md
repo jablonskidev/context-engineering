@@ -1,4 +1,4 @@
-# Beyond Agent Instructions: Context Engineering with Vale
+# Beyond Agent Instructions: Context Engineering With Vale
 
 **Table of Contents:**
 - [Instructions Alone Provide No Evidence of Compliance](#Instructions-Alone-Provide-No-Evidence-of-Compliance)
