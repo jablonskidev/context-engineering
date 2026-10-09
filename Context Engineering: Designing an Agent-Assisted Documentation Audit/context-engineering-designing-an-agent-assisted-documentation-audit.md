@@ -28,7 +28,7 @@ I provided the agent with a variety of examples because I did not want a single 
 
 Together, the references gave the agent standards to evaluate against and concrete examples to learn from.
 
-# The audit contract
+## The audit contract
 
 The audit needed to:
 - Evaluate each section against its reader task
