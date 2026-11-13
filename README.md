@@ -1,6 +1,7 @@
 # Context Engineering
 
 Read these articles to see how I approach context engineering:
+- [Context Engineering for a Docs Repo, Layer by Layer](https://github.com/jablonskidev/context-engineering/blob/main/Context%20Engineering%20for%20a%20Docs%20Repo%20Layer%20by%20Layer/context-engineering-for-a-docs-repo-layer-by-layer.md)
 - [Context Engineering: Designing an Agent-Assisted Documentation Audit](https://github.com/jablonskidev/context-engineering/blob/main/Context%20Engineering%3A%20Designing%20an%20Agent-Assisted%20Documentation%20Audit/context-engineering-designing-an-agent-assisted-documentation-audit.md)
 - [Context Artifacts Without Reinventing Technical Writing](https://github.com/jablonskidev/context-engineering/blob/main/Context%20Artifacts%20Without%20Reinventing%20Technical%20Writing/context-artifacts-without-reinventing-technical-writing.md)
 - [Task-Centered Docs as Context Engineering](https://github.com/jablonskidev/context-engineering/blob/main/Task-Centered%20Docs%20as%20Context%20Engineering/task-centered-docs-as-context-engineering.md)
